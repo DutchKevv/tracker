@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  track-mongo:
+    container_name: track-mongo
+    image: mongo
+    ports:
+      - 27018:27017
+    environment:
+      MONGO_DATA_DIR: /usr/src/app/data/db
+      MONGO_LOG_DIR: /dev/null
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: track
+    volumes:
+      - ./data/db:/usr/src/app/data/db
+  track-api:
+    image: track-api
+    container_name: track-api
+    build:
+      context: ./
+      dockerfile: ./server-api/Dockerfile
+    ports:
+      - 3002:3002
+    volumes:
+      - ./server-api/src:/usr/src/app/server-api/src
+      - /usr/src/app/server-api/node_modules
+    depends_on:
+      - track-mongo

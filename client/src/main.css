@@ -1,0 +1,46 @@
+#map {
+    height: 100%;
+}
+
+#buildUrlBtn {
+    float: left;
+}
+
+.container-users {
+    border-bottom: 1px solid red;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    width: calc(100% / 6 - 30px);
+    padding: 5px;
+    font-size: 12px;
+}
+
+.table th:first-child,
+.table td:first-child {
+    width: 30px;
+}
+
+.user-row {
+    background: white;
+    color: black;
+    padding: 10px;
+}
+
+.modal {
+    color: black !important;
+}
+
+#formBuildUrlOutput {
+    color: red;
+    font-size: 20px;
+}
+
+.dot {
+    width: 15px; 
+    height: 15px; 
+    border-radius: 50%; 
+}
