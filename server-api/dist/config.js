@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const isDocker = require('is-docker')();
 const dev = {
     'http': {
-        'port': 6000,
+        'port': 80,
         'host': isDocker ? '0.0.0.0' : '0.0.0.0',
     },
     'mongo': {

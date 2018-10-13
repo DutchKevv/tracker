@@ -4,7 +4,7 @@ const isDocker = require('is-docker')();
 
 const dev: IAppOptions = <IAppOptions>{
     'http': {
-        'port': 6000,
+        'port': 80,
         'host': isDocker ? '0.0.0.0' : '0.0.0.0',
     },
     'mongo': {
