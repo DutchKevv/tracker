@@ -47,7 +47,7 @@ export class App {
         this.server = new http.Server(this.api);
 
         // statics
-        this.api.use(express.static(path.join(__dirname, '../../client/src')));
+        this.api.use(express.static(path.join(__dirname, '../../client/src'), {index: '_'}));
 
         // ip address
         this.api.enable('trust proxy');

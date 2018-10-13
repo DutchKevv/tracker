@@ -25,11 +25,11 @@ export interface IUserEvent {
 }
 
 export interface IUserEventLocation {
-    lat: number;
-    long: number;
-    city: string;
-    country: string;
-    region: string;
+    lat?: number;
+    long?: number;
+    city?: string;
+    country?: string;
+    region?: string;
 }
 
 export const UserSchema = new Schema(

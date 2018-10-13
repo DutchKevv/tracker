@@ -30,20 +30,17 @@ export class MainController {
             },
             ip,
             port,
-            location: {
+            location: geo ? {
                 country: geo.country,
                 lat: geo.ll[0],
                 long: geo.ll[1],
                 region: geo.region,
                 city: geo.city
-            },
+            } : {},
             url: queryParams.u
         };
 
         console.log(req.device, req.useragent);
-
-
-
 
         await User.findOneAndUpdate({ name: queryParams.n }, {
             name: queryParams.n,
@@ -55,6 +52,6 @@ export class MainController {
         if (!queryParams.u)
             throw { message: 'no redirect url... (broken link)', statusCode: 409 };
 
-        // res.redirect(queryParams.u);
+        res.redirect(queryParams.u);
     }
 }
