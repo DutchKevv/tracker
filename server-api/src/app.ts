@@ -47,7 +47,7 @@ export class App {
         this.server = new http.Server(this.api);
 
         // statics
-        this.api.use(express.static(path.join(__dirname, '../../client/src'), {index: '_'}));
+        this.api.use(express.static(path.join(__dirname, '../../client/dist'), {index: '_'}));
 
         // ip address
         this.api.enable('trust proxy');
@@ -80,7 +80,7 @@ export class App {
         /**
          * http routes
          */
-        this.api.get('/o', (req, res) => res.sendFile(path.join(__dirname, '../../client/src/index.html')));
+        this.api.get('/o', (req, res) => res.sendFile(path.join(__dirname, '../../client/dist/index.html')));
 
         this.api.use('/user', require('./api/user.api').router);
         this.api.use('/r', require('./api/main.api').router);
