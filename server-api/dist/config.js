@@ -13,7 +13,7 @@ const dev = {
 const prod = {
     'http': {
         'port': 5000,
-        'host': ''
+        'host': '0.0.0.0'
     },
     'mongo': {
         'connectUrl': `mongodb://root:track@${isDocker ? 'rtl-mongo' : '127.0.0.1'}:27018/track?authSource=admin`
