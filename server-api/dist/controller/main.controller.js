@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MainController = void 0;
 const geoip = require("geoip-lite");
 const user_schema_1 = require("../schema/user.schema");
 class MainController {
@@ -10,6 +11,7 @@ class MainController {
         const geo = geoip.lookup(ip);
         const model = req.device.parser.get_model();
         const deviceType = req.device.parser.get_type();
+        console.log(geo);
         const event = {
             device: {
                 model,

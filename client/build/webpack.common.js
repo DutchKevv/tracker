@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 // const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -5,6 +6,7 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: path.join(__dirname, '../src'),
@@ -80,6 +82,11 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+          }),
+          
         new CleanWebpackPlugin([
             path.join(__dirname, '../dist')
         ], {
@@ -100,6 +107,12 @@ module.exports = {
             filename: "[name].[hash].css",
             chunkFilename: "[id].[hash].css"
         }),
+
+            new HtmlWebpackPlugin({
+                chunks: ['main'],
+                template: 'index.html',
+                filename: 'index.html'
+            }),
 
         // // add async to <script>
         // new ScriptExtHtmlWebpackPlugin({

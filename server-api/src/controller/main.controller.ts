@@ -1,6 +1,5 @@
 import * as geoip from 'geoip-lite';
-import { User, IUserModel, IUserEvent, IUserEventLocation } from '../schema/user.schema';
-import { MongooseDocument, DocumentQuery } from 'mongoose';
+import { User, IUserEvent, IUserEventLocation } from '../schema/user.schema';
 import { Response } from 'express';
 
 export interface IMonitRequestQueryParams {
@@ -18,6 +17,7 @@ export class MainController {
         const model = req.device.parser.get_model();
         const deviceType = req.device.parser.get_type();
 
+        console.log(geo)
         const event: IUserEvent = {
             device: {
                 model,

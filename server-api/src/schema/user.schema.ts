@@ -92,4 +92,4 @@ export const UserSchema = new Schema(
 
 // UserSchema.plugin(<any>beautifyUnique);
 
-export const User: Model<IUserModel> = model('User', UserSchema);
+export const User = model('User', UserSchema);

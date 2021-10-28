@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.App = void 0;
 const path = require("path");
 const http = require("http");
 const formidable = require("express-formidable");
@@ -93,6 +94,7 @@ class App {
         this.db.once('open', () => {
             console.info('RTL-API', 'connected to DB');
         });
+        console.log(config_1.config.mongo.connectUrl);
         mongoose.connect(config_1.config.mongo.connectUrl, { useNewUrlParser: true });
     }
 }

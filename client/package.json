@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -p --progress --colors --devtool sourcemap --hot --config ./build/webpack.dev.js"
+    "start": "webpack -p --progress --colors --devtool sourcemap --hot --config ./build/webpack.dev.js",
+    "prod": "webpack -p --progress --colors --devtool sourcemap --hot --config ./build/webpack.common.js"
   },
   "author": "",
   "license": "ISC",
@@ -31,8 +32,8 @@
     "lodash-es": "^4.17.11",
     "mini-css-extract-plugin": "0.4.4",
     "minimist": "^1.2.0",
-    "node-sass": "4.9.3",
-    "ol": "^5.2.0",
+    "node-sass": "^4.14.1",
+    "ol": "^6.9.0",
     "popper.js": "^1.14.4",
     "postcss-loader": "3.0.0",
     "preload-webpack-plugin": "3.0.0-beta.2",

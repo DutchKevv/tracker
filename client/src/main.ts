@@ -2,6 +2,8 @@ import './main.scss';
 import * as $ from 'jquery';
 import Map from 'ol/Map';
 import View from 'ol/View';
+import TileLayer from 'ol/layer/Tile';
+import { Layer } from 'ol/layer';
 // import Source from 'ol/Source';
 import { Style, Icon, Circle, Fill, Stroke } from 'ol/style';
 import { OSM } from 'ol/source.js';
@@ -10,13 +12,13 @@ import Feature from 'ol/Feature';
 import * as proj from 'ol/proj';
 import { Point } from 'ol/geom.js';
 import { fromLonLat } from 'ol/proj.js';
-// import * as ol from 'ol';
+import * as ol from 'ol';
 // import Point from 'ol/Point';
 import * as _ from 'lodash';
 // import 'popper.js';
 // import 'bootstrap';
 
-console.log('sd22f', proj['Projection'], proj['Projection'].fromLonLat);
+// console.log('sd22f', proj['Projection'], proj.Projection.);
 // window['ol'] = ol;
 
 const TEMPLATE_USER_ROW = _.template(document.querySelector('#userRowTemplate').innerHTML);
@@ -25,8 +27,8 @@ const COLORS = ['red', 'yellow', 'purple', 'brown', 'orange', 'grey', 'green', '
 
 //'136.144.181.63';
 
-var sourceFeatures = new Vector(),
-    layerFeatures = new Vector({ source: sourceFeatures });
+var sourceFeatures = new Vector();
+// var layerFeatures = new Vector({ source: sourceFeatures });
 
 var long_string = 'a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text ';
 
@@ -61,11 +63,16 @@ class App {
     public users = [];
     public map: any;
     
-    private _mapFeatures = new Vector();
+    private _mapFeatures = <any>new Vector();
     private _sourceFeatures = new Vector({ source: this._mapFeatures });
 
-    async init(): Promise<void> {
-        this.users = await this._loadUsers();
+    showUrlModal() {
+        ($('#urlModal') as any).modal('show')
+    }
+    
+    async init(): Promise<any> {
+        await this._loadUsers();
+
         this._loadMap();
 
         $('#buildUrlModal form').submit(event => {
@@ -99,7 +106,9 @@ class App {
             }))
         }));
     
-        this._sourceFeatures.addFeature(feature);
+       this.map.getSource().addFeature(feature);
+
+        console.log('add')
     }
 
     /**
@@ -132,25 +141,31 @@ class App {
      * 
      */
     private async _loadMap(): Promise<void> {
+        const layer = new TileLayer({
+            source: new OSM(),
+          });
+
         this.map = new Map({
-            target: 'map',
             layers: [
-                new Tile({
-                    source: new OSM()
-                }),
-                layerFeatures
-            ],
-            view: new View({
-                center: fromLonLat([4.895168, 52.370216]),
-                zoom: 8
-            })
+                layer
+              ],
+              target: 'map',
+              view: new View({
+                center: [0, 0],
+                zoom: 2,
+              }),
         });
+        
+        // var markers = layer,.( "Markers" );
+        // map.addLayer(markers);
 
         this.users.forEach(user => {
             user.events.forEach(event => {
                 if (event.location)
                     this.addMarker(user, event.location.lat, event.location.long);
             });
+
+            console.log(user)
         });
     }
 }

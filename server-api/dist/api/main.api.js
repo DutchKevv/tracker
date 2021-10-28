@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
 const express_1 = require("express");
 const bootstrapper_1 = require("../bootstrapper");
 exports.router = express_1.Router();

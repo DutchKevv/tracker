@@ -1,6 +1,6 @@
 import * as geoip from 'geoip-lite';
 import { User, IUserModel, IUserEvent, IUserEventLocation } from '../schema/user.schema';
-import { MongooseDocument, DocumentQuery } from 'mongoose';
+import { DocumentQuery } from 'mongoose';
 import { Response } from 'express';
 
 export class UserController {

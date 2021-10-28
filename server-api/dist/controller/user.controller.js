@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserController = void 0;
 const user_schema_1 = require("../schema/user.schema");
 class UserController {
     getList(req, params) {

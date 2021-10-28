@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.config = void 0;
 const isDocker = require('is-docker')();
 const dev = {
     'http': {

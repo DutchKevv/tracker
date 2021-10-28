@@ -128,6 +128,7 @@ export class App {
             console.info('RTL-API', 'connected to DB');
         });
 
+console.log(config.mongo.connectUrl)
         mongoose.connect(config.mongo.connectUrl, { useNewUrlParser: true });
     }
 }
