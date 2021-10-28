@@ -5,10 +5,10 @@ const isDocker = require('is-docker')();
 const dev: IAppOptions = <IAppOptions>{
     'http': {
         'port': 5000,
-        'host': isDocker ? '0.0.0.0' : 'localhost',
+        'host': 'localhost',
     },
     'mongo': {
-        'connectUrl': `mongodb://root:track@${isDocker ? 'rtl-mongo' : '127.0.0.1'}:27018/track?authSource=admin`
+        'connectUrl': `mongodb://root:track@127.0.0.1}:27017/track?authSource=admin`
     }
 };
 
